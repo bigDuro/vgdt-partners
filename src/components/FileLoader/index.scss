@@ -1,0 +1,21 @@
+#pg-photo-container, #pg-photo-container img{
+  width: 100% !important;
+  height: auto !important;
+  overflow: hidden;
+
+}
+
+.dzu {
+  &-inputLabel {
+    background-color: #009be5;
+    display: flex;
+    width: 320px;
+    border-radius: 5px;
+    padding: 10px;
+    height: 50px;
+    margin: 0 auto;
+    color: #fff !important;
+    margin-top: 25px;
+  }
+
+}
