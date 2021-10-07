@@ -1,1 +1,1 @@
-# vgdt-driver
+# vgdt-partners
