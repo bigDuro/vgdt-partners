@@ -37,9 +37,6 @@ const DoughnutChart = (props) => {
       },
     ],
   };
-  if(profits > 0) {
-    console.log('profits:: ', profits);
-  }
 
   return (
     <>
