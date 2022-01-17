@@ -63,3 +63,25 @@ export const getDateRangeOfWeek = (weekNo, y) => {
     rangeIsTo = (d1.getMonth() + 1) + "/" + d1.getDate() + "/" + y;
     return rangeIsFrom + " - " + rangeIsTo;
 };
+
+
+export const getMomentQuarters = (data, key) => {
+  const moment = getConfig()
+  return data.reduce((acc, date) => {
+    // create a composed key: 'year-week'
+    const weekVal = `${moment(date[key]).quarter()}`;
+    const wkUpdateVal = weekVal;
+    const year = weekVal === '1' && moment(date[key]).month() === 11 ? moment(date[key]).year() + 1 : moment(date[key]).year();
+    const yearWeek = `${year}-${wkUpdateVal}`;
+
+    // add this key as a property to the result object
+    if (!acc[yearWeek]) {
+      acc[yearWeek] = [];
+    }
+
+    // push the current date that belongs to the year-week calculated befor
+    acc[yearWeek].push(date);
+
+    return acc;
+  }, {});
+}

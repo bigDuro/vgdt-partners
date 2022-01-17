@@ -102,7 +102,7 @@ export default function WeeklyCard(props) {
               <IconButton aria-label="settings">
               </IconButton>
             }
-            title={`${week === currentWeek ? 'Current Week: ' + theDateRange : week < currentWeek ? 'Week: ' + theDateRange  :  'Upcoming Week: ' + theDateRange}`}
+            title={`Quarter: ${partsOfWeek[1]}, ${partsOfWeek[0]}`}
           />
           <CardContent>
            <Typography variant="body2" color="textSecondary" component="p">

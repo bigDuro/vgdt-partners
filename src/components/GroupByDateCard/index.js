@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import WeeklyCard from '../CardView/WeeklyCard';
 import DriverSelect from './DriverSelect';
-import { getMomentWeeks } from '../../utils/dates';
+import { getMomentWeeks, getMomentQuarters } from '../../utils/dates';
 
 export default function GroupByDateCard(props) {
   const { rows, tables, actions, searchTerm, driverSelect } = props;
@@ -63,13 +63,15 @@ export default function GroupByDateCard(props) {
   }
 
   const getCards = (rows) => {
+    const quarters = getMomentQuarters(rows, 'dropoffDate');
     const weeks = getMomentWeeks(rows, 'dropoffDate');
-    return Object.keys(weeks).map((week, idx) => {
-      const totals = getWeeklyTotals(weeks, week)
+    return Object.keys(quarters).map((quarter, idx) => {
+      const totals = getWeeklyTotals(quarters, quarter)
       return (
-        <Grid item xs={12} key={idx} id={week}>
-        {weeks[week] && weeks[week].length ?
-          <WeeklyCard actions={actions} key={idx} expand={idx} totals={totals} data={weeks[week]} week={week} isMobile={isMobile} selected={selected} handleSelected={handleSelected}/> : ""}
+        <Grid item xs={12} key={idx} id={quarter}>
+        {console.log('quarter:: ', quarter)}
+        {quarters[quarter] && quarters[quarter].length ?
+          <WeeklyCard actions={actions} key={idx} expand={idx} totals={totals} data={quarters[quarter]} week={quarter} isMobile={isMobile} selected={selected} handleSelected={handleSelected}/> : ""}
         </Grid>
       )
     })
